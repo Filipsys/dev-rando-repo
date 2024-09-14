@@ -1,0 +1,79 @@
+{
+  "name": "dev-rando-challenge",
+  "version": "1.0.0",
+  "description": "A randomly generated package for the Dev Rando challenge",
+  "main": "index.js",
+  "scripts": {
+    "build": "esbuild src/index.js --bundle --outfile=dist/index.js --loader:.html=text",
+    "verify-deps": "node -e \"const fs = require('fs');\nconst crypto = require('crypto');\nconst assert = require('assert');\n\nconst packageJson = JSON.parse(fs.readFileSync('./package.json', 'utf8'));\nconst { dependencies, devDependencies } = packageJson;\nconst depsHash = crypto\n  .createHash('sha256')\n  .update(JSON.stringify({ ...dependencies, ...devDependencies }))\n  .digest('hex');\n\nassert.strictEqual(depsHash, 'c770ddca854d7c65a1c9a9158cd44dff7aa4f3cc843f55f2c29b8e4ac6c7ce77', 'Dependencies integrity check failed!');\nconsole.log('✨ READY TO RANDO ✨');\nconsole.log('✨ Dependencies integrity verified ✨');\nconsole.log('✨ READY TO RANDO ✨');\"",
+    "prepare": "npm run verify-deps"
+  },
+  "dependencies": {
+    "esbuild": "^0.23.0",
+    "stopwords-iso": "^1.1.0",
+    "@types/whatwg-mimetype": "^3.0.2",
+    "ngeohash": "^0.6.3",
+    "textversionjs": "^1.1.3",
+    "@uifabric/theme-samples": "^0.1.4",
+    "eslint-config-turbo": "^1.9.9",
+    "@types/semver-utils": "1.1.3",
+    "@japa/assert": "^3.0.0",
+    "qrcode.vue": "^3.3.3",
+    "simple-github-release": "^1.0.0",
+    "@react-spring/web": "~9.6.1",
+    "download": "^8.0.0",
+    "rethinkdb-migrate": "^1.4.0",
+    "rxjs": "^7.8.0",
+    "lodash.sortedindexby": "^4.6.0",
+    "@types/ssh2": "^0.5.52",
+    "uint8-util": "^2.2.5",
+    "run-parallel": "^1.2.0",
+    "@radix-ui/react-scroll-area": "^1.1.0",
+    "@types/accept-language-parser": "1.5.6",
+    "@vscode/v8-heap-parser": "^0.1.0",
+    "fast-stable-stringify": "1.0.0",
+    "backport": "^8.9.8",
+    "@radix-ui/react-avatar": "^1.0.4",
+    "yaml-ast-parser": "0.0.43",
+    "@node-oauth/oauth2-server": "^5.1.0"
+  },
+  "devDependencies": {
+    "graphql-date": "^1.0.3",
+    "pidtree": "^0.5.0",
+    "pm2-axon": "~4.0.1",
+    "recursive-copy": "^2.0.14",
+    "minitouch-prebuilt-beta": "^1.3.0",
+    "require-again": "^2.0.0",
+    "picgo": "^1.5.7",
+    "@types/throng": "^5.0.7",
+    "openapi-fetch": "^0.9.7",
+    "pjson": "1.0.9"
+  },
+  "keywords": [
+    "dev-rando",
+    "challenge",
+    "random-dependencies",
+    "randomizer",
+    "leetcode",
+    "npm",
+    "package",
+    "dependencies",
+    "oot",
+    "zfg"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "email": "michael@lofilabs.xyz"
+  },
+  "repository": {
+    "type": "",
+    "url": ""
+  },
+  "homepage": "",
+  "devrandoMetadata": {
+    "generatedAt": "2024-09-07T05:28:02.295Z",
+    "totalDependencies": 37,
+    "challengeHash": "c770ddca854d7c65a1c9a9158cd44dff7aa4f3cc843f55f2c29b8e4ac6c7ce77"
+  }
+}
