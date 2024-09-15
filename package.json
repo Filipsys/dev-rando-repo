@@ -4,7 +4,7 @@
   "description": "A randomly generated package for the Dev Rando challenge",
   "main": "index.js",
   "scripts": {
-    "build": "esbuild src/index.js --bundle --outfile=dist/index.js --loader:.html=text",
+    "start": "esbuild --bundle src/index.jsx --outfile=www/main.js --servedir=www",
     "verify-deps": "node -e \"const fs = require('fs');\nconst crypto = require('crypto');\nconst assert = require('assert');\n\nconst packageJson = JSON.parse(fs.readFileSync('./package.json', 'utf8'));\nconst { dependencies, devDependencies } = packageJson;\nconst depsHash = crypto\n  .createHash('sha256')\n  .update(JSON.stringify({ ...dependencies, ...devDependencies }))\n  .digest('hex');\n\nassert.strictEqual(depsHash, 'c770ddca854d7c65a1c9a9158cd44dff7aa4f3cc843f55f2c29b8e4ac6c7ce77', 'Dependencies integrity check failed!');\nconsole.log('✨ READY TO RANDO ✨');\nconsole.log('✨ Dependencies integrity verified ✨');\nconsole.log('✨ READY TO RANDO ✨');\"",
     "prepare": "npm run verify-deps"
   },
